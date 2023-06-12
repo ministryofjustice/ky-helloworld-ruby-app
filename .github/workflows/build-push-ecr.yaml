@@ -45,6 +45,6 @@ jobs:
         env:
           ECR_URL: ${{ secrets.ECR_URL }}
           ECR_NAME: ${{ secrets.ECR_NAME }}
-          IMAGE_TAG: ${ github.sha }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           make deploy        
