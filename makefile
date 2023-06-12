@@ -1,3 +1,4 @@
+#!make
 include .env
 export
 
