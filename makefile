@@ -1,10 +1,5 @@
-IMAGE := ministryofjustice/cloud-platform-helloworld-ruby
-TAG := 1.2
+include .env
+export
 
-.built-image: Dockerfile Gemfile Gemfile.lock makefile
-	docker build -t $(IMAGE) .
-	touch .built-image
-
-push: .built-image
-	docker tag $(IMAGE) $(IMAGE):$(TAG)
-	docker push $(IMAGE):$(TAG)
+deploy:
+	envsubst < kubectl_deploy/deployment.yaml | kubectl apply -f - -n ky-first-cp-app-dev
